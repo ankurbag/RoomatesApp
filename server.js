@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-
+var server = require('http').Server(app);
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -12,4 +12,8 @@ require ("./test/app.js")(app);
 
 var port = process.env.PORT || 3000;
 
-app.listen(port);
+//app.listen(port);
+
+server.listen(port, function() {
+    console.log("App is running on port " + port);
+});
